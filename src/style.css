@@ -1367,3 +1367,8 @@ pre.code {
   background: none;
   cursor: pointer;
 }
+
+.msg a {
+  color: inherit;
+  font-weight: 600;
+}

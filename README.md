@@ -10,6 +10,7 @@ Content Security Policy (`connect-src 'none'`) blocks the page from sending data
 | JWT Decoder         | Header, claims (with explanations), expiry status; verifies HS256/384/512 signatures with a secret                                                               |
 | Password Generator  | `crypto.getRandomValues` with no modulo bias; character sets, look-alike exclusion, entropy meter                                                                |
 | PDF Editor          | Text, drawing, highlight, white-out, box, image and signature; rotate, reorder, delete and insert pages; undo/redo; correct on rotated pages                     |
+| PDF Merge           | Combine PDFs in any order (drag or arrows), choose pages per file (`1-3, 5`, `8-`, `5-3`); rejects damaged or password-protected files                           |
 | Resume Maker        | Classic, Modern, Minimal, Executive and Compact (ATS) templates; accent colour, font, A4/Letter; autosave; JSON import/export; PDF via the browser's Save as PDF |
 | Base64              | Unicode-safe encode/decode, URL-safe variant, file → data URL                                                                                                    |
 | URL Encode / Decode | Component or full-URL encoding, `+` as space, URL parts and query parameters                                                                                     |
