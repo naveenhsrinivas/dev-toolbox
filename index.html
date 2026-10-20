@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free developer tools that run in your browser: text compare, JSON formatter, JWT decoder, password generator, Base64, hashes, UUIDs and more."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Dev Toolbox</title>
+    <script src="./theme.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <button type="button" id="menu" class="icon-btn menu-btn" aria-label="Tools menu" aria-expanded="false" aria-controls="sidebar">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+      <a href="#/" class="brand">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12" /></svg>
+        Dev Toolbox
+      </a>
+      <span class="private-pill" title="All tools run locally in your browser">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6z" /></svg>
+        Runs locally
+      </span>
+      <button type="button" id="theme" class="icon-btn" aria-label="Switch theme">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+      </button>
+    </header>
+    <div class="layout">
+      <aside id="sidebar" class="sidebar" aria-label="Tools">
+        <input id="search" type="search" placeholder="Search tools  ( / )" aria-label="Search tools" autocomplete="off" />
+        <nav id="nav"></nav>
+      </aside>
+      <div id="scrim" class="scrim"></div>
+      <main id="main" tabindex="-1"></main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
