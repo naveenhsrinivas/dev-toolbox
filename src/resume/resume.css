@@ -1,0 +1,783 @@
+/* ================= Resume page (shared) ================= */
+
+.resume {
+  --r-accent: #1f4e79;
+  --r-text: #1d1f24;
+  --r-muted: #555b66;
+  --r-rule: #d5d8de;
+  position: relative;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--r-text);
+  font-size: 10.5pt;
+  line-height: 1.42;
+  padding: 15mm 16mm;
+  /* Repeat the page padding (and backgrounds) on every printed page. */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.resume.page-a4 {
+  width: 210mm;
+  min-height: 297mm;
+}
+
+.resume.page-letter {
+  width: 215.9mm;
+  min-height: 279.4mm;
+}
+
+.resume.font-sans {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+}
+
+.resume.font-serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.resume * {
+  box-sizing: border-box;
+}
+
+.resume h1,
+.resume h2,
+.resume h3,
+.resume p,
+.resume ul {
+  margin: 0;
+}
+
+.resume a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.r-name {
+  font-size: 24pt;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.r-title {
+  margin-top: 2pt !important;
+  font-size: 12pt;
+  color: var(--r-accent);
+}
+
+.r-contact {
+  margin-top: 6pt !important;
+  font-size: 9.5pt;
+  color: var(--r-muted);
+}
+
+.r-sep {
+  margin: 0 6pt;
+  color: var(--r-rule);
+}
+
+.r-section {
+  margin-top: 13pt;
+}
+
+.r-h2 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--r-accent);
+  margin-bottom: 6pt !important;
+  break-after: avoid;
+}
+
+/* Long entries may split across pages, but never between a heading and its first line, or inside a bullet. */
+.r-entry-head {
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+.r-bullets li,
+.r-skill,
+.r-line,
+.r-details {
+  break-inside: avoid;
+}
+
+.r-small {
+  break-inside: avoid;
+}
+
+.r-entry + .r-entry {
+  margin-top: 9pt;
+}
+
+.r-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12pt;
+}
+
+.r-entry-main {
+  min-width: 0;
+}
+
+.r-role {
+  font-size: 11pt;
+  font-weight: 700;
+}
+
+.r-org {
+  font-style: italic;
+  color: var(--r-muted);
+}
+
+.r-loc {
+  font-style: normal;
+}
+
+.r-dates {
+  flex: none;
+  font-size: 9.5pt;
+  color: var(--r-muted);
+  white-space: nowrap;
+}
+
+.r-bullets {
+  margin-top: 3pt !important;
+  padding-left: 14pt;
+}
+
+.r-bullets li + li {
+  margin-top: 1.5pt;
+}
+
+.r-details,
+.r-text {
+  margin-top: 2pt !important;
+}
+
+.r-skill + .r-skill,
+.r-line + .r-line {
+  margin-top: 2pt;
+}
+
+/* ================= Classic ================= */
+
+.tpl-classic .r-head {
+  text-align: center;
+  padding-bottom: 8pt;
+}
+
+.tpl-classic .r-name {
+  font-size: 26pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tpl-classic .r-title {
+  color: var(--r-muted);
+  font-style: italic;
+}
+
+.tpl-classic .r-h2 {
+  color: var(--r-text);
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--r-text);
+  padding-bottom: 2pt;
+}
+
+.tpl-classic .r-role {
+  color: var(--r-accent);
+}
+
+/* ================= Modern ================= */
+
+.resume.tpl-modern {
+  display: grid;
+  grid-template-columns: 34% minmax(0, 1fr);
+  padding: 0;
+  background: linear-gradient(to right, var(--r-accent) 0 34%, #fff 34%);
+}
+
+.tpl-modern .r-side {
+  padding: 15mm 7mm 15mm 9mm;
+  color: #fff;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tpl-modern .r-main {
+  padding: 15mm 13mm 15mm 9mm;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tpl-modern .r-photo {
+  display: block;
+  width: 32mm;
+  height: 32mm;
+  margin: 0 auto 8mm;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgb(255 255 255 / 0.7);
+}
+
+.tpl-modern .r-side .r-section:first-of-type {
+  margin-top: 0;
+}
+
+.tpl-modern .r-side .r-h2 {
+  color: #fff;
+  border-bottom: 1px solid rgb(255 255 255 / 0.35);
+  padding-bottom: 2pt;
+}
+
+.tpl-modern .r-side .r-line,
+.tpl-modern .r-side .r-dates {
+  color: rgb(255 255 255 / 0.9);
+  font-size: 9.5pt;
+  overflow-wrap: anywhere;
+}
+
+.tpl-modern .r-skill-group + .r-skill-group {
+  margin-top: 6pt;
+}
+
+.tpl-modern .r-skill-name {
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  margin-bottom: 3pt;
+}
+
+.r-tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3pt;
+}
+
+.tpl-modern .r-tags li {
+  padding: 1pt 5pt;
+  border-radius: 3pt;
+  background: rgb(255 255 255 / 0.16);
+  font-size: 9pt;
+}
+
+.tpl-modern .r-main .r-head {
+  margin-bottom: 4pt;
+}
+
+.tpl-modern .r-name {
+  font-size: 26pt;
+  color: var(--r-accent);
+}
+
+.tpl-modern .r-main .r-section:first-of-type {
+  margin-top: 10pt;
+}
+
+.tpl-modern .r-main .r-h2 {
+  display: flex;
+  align-items: center;
+  gap: 6pt;
+}
+
+.tpl-modern .r-main .r-h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--r-rule);
+}
+
+.tpl-modern .r-org {
+  font-style: normal;
+  color: var(--r-accent);
+  font-weight: 600;
+}
+
+/* ================= Minimal ================= */
+
+.tpl-minimal {
+  padding: 18mm 18mm;
+}
+
+.tpl-minimal .r-name {
+  font-size: 28pt;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.tpl-minimal .r-head {
+  padding-bottom: 10pt;
+  margin-bottom: 4pt;
+  border-bottom: 2px solid var(--r-accent);
+}
+
+.tpl-minimal .r-section {
+  display: grid;
+  grid-template-columns: 38mm minmax(0, 1fr);
+  gap: 6mm;
+  margin-top: 14pt;
+}
+
+.tpl-minimal .r-h2 {
+  font-size: 8.5pt;
+  letter-spacing: 0.1em;
+  overflow-wrap: normal;
+  padding-top: 2pt;
+}
+
+.tpl-minimal .r-org {
+  font-style: normal;
+}
+
+.tpl-minimal .r-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tpl-minimal .r-bullets li {
+  position: relative;
+  padding-left: 10pt;
+}
+
+.tpl-minimal .r-bullets li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--r-accent);
+}
+
+/* ================= Executive ================= */
+
+.resume.tpl-executive {
+  padding: 0 0 14mm;
+}
+
+.tpl-executive .r-band {
+  display: flex;
+  align-items: center;
+  gap: 8mm;
+  padding: 13mm 16mm 11mm;
+  background: var(--r-accent);
+  color: #fff;
+}
+
+.tpl-executive .r-photo {
+  width: 28mm;
+  height: 28mm;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgb(255 255 255 / 0.6);
+}
+
+.tpl-executive .r-name {
+  font-size: 28pt;
+  letter-spacing: 0.01em;
+}
+
+.tpl-executive .r-title {
+  color: rgb(255 255 255 / 0.85);
+  font-size: 13pt;
+}
+
+.tpl-executive .r-contact {
+  color: rgb(255 255 255 / 0.85);
+}
+
+.tpl-executive .r-sep {
+  color: rgb(255 255 255 / 0.45);
+}
+
+.tpl-executive .r-body {
+  padding: 14mm 16mm 0;
+  /* Page 1 sits just under the band; later pages get a full top margin (the padding repeats per page). */
+  margin-top: -10mm;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tpl-executive .r-h2 {
+  color: var(--r-text);
+  border-left: 4px solid var(--r-accent);
+  padding-left: 6pt;
+}
+
+.tpl-executive .r-org {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--r-accent);
+}
+
+/* ================= Compact (ATS) ================= */
+
+.resume.tpl-compact {
+  font-size: 9.8pt;
+  line-height: 1.32;
+  padding: 12mm 14mm;
+  --r-muted: #333;
+}
+
+.tpl-compact .r-name {
+  font-size: 18pt;
+}
+
+.tpl-compact .r-title {
+  font-size: 11pt;
+  font-weight: 600;
+}
+
+.tpl-compact .r-contact {
+  margin-top: 3pt !important;
+  color: #111;
+}
+
+.tpl-compact .r-section {
+  margin-top: 9pt;
+}
+
+.tpl-compact .r-h2 {
+  font-size: 10pt;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #111;
+  padding-bottom: 1pt;
+  margin-bottom: 4pt !important;
+}
+
+.tpl-compact .r-role {
+  font-size: 10pt;
+}
+
+.tpl-compact .r-org {
+  font-style: normal;
+}
+
+.tpl-compact .r-entry + .r-entry {
+  margin-top: 6pt;
+}
+
+/* ================= Editor ================= */
+
+.rs-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.rs-templates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 10px;
+}
+
+.rs-template {
+  display: grid;
+  gap: 6px;
+  padding: 6px 6px 8px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.rs-template:hover {
+  border-color: var(--accent);
+}
+
+.rs-template[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.rs-template strong {
+  font-size: 0.85rem;
+  padding: 0 2px;
+}
+
+.rs-mini {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: #fff;
+  aspect-ratio: 210 / 297;
+}
+
+.rs-mini > .resume {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+.rs-settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+}
+
+.rs-settings select {
+  width: auto;
+}
+
+.rs-form {
+  display: grid;
+  gap: 10px;
+}
+
+.rs-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.rs-card > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.rs-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rs-card > summary::before {
+  content: "▸";
+  color: var(--muted);
+  transition: transform 0.15s;
+}
+
+.rs-card[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.rs-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.rs-card-body {
+  display: grid;
+  gap: 10px;
+  padding: 0 14px 14px;
+}
+
+.rs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.rs-grid .full {
+  grid-column: 1 / -1;
+}
+
+.rs-grid .field > label {
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.rs-item {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.rs-item-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rs-item-head strong {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.rs-item-head .icon-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.rs-item-head .icon-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.rs-photo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rs-photo-row img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rs-preview-col {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  gap: 8px;
+}
+
+.rs-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.rs-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 0.15),
+    0 8px 28px rgb(0 0 0 / 0.1);
+  background: #fff;
+}
+
+.rs-preview > .resume {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.rs-break {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1.5px dashed #e03131;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rs-break span {
+  position: absolute;
+  right: 4px;
+  top: -18px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #e03131;
+  color: #fff;
+  font-size: 11px;
+  font-family: system-ui, sans-serif;
+}
+
+@media (max-width: 1000px) {
+  .rs-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rs-preview-col {
+    position: static;
+  }
+}
+
+@media (max-width: 520px) {
+  .rs-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ================= Printing ================= */
+
+#resume-print {
+  display: none;
+}
+
+@page resume-a4 {
+  size: A4;
+  margin: 0;
+}
+
+@page resume-letter {
+  size: letter;
+  margin: 0;
+}
+
+@media print {
+  html.printing-resume body > *:not(#resume-print) {
+    display: none !important;
+  }
+
+  html.printing-resume,
+  html.printing-resume body {
+    background: #fff !important;
+    min-height: 0 !important;
+  }
+
+  html.printing-resume #resume-print {
+    display: block;
+  }
+
+  #resume-print.page-a4 {
+    page: resume-a4;
+  }
+
+  #resume-print.page-letter {
+    page: resume-letter;
+  }
+
+  #resume-print .resume {
+    min-height: 0;
+  }
+}
+
+.rs-template > span {
+  display: grid;
+  gap: 6px;
+}
+
+.rs-mini {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  /* A scrolling strip of small cards, so the form isn't pushed far down. */
+  .rs-templates {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 104px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+}

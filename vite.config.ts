@@ -7,7 +7,7 @@ const CSP = [
   "script-src 'self'",
   "worker-src 'self'",
   "style-src 'self'",
-  "img-src 'self' data:",
+  "img-src 'self' data: blob:",
   "connect-src 'none'",
   "form-action 'none'",
   "base-uri 'none'",

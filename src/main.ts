@@ -5,14 +5,16 @@ import { tool as hash } from "./tools/hash";
 import { tool as json } from "./tools/json";
 import { tool as jwt } from "./tools/jwt";
 import { tool as password } from "./tools/password";
+import { tool as pdfEditor } from "./tools/pdfeditor";
 import { tool as regex } from "./tools/regex";
+import { tool as resume } from "./tools/resume";
 import { tool as text } from "./tools/text";
 import { tool as time } from "./tools/time";
 import { tool as url } from "./tools/url";
 import { tool as uuid } from "./tools/uuid";
 import { h, icon, type Tool } from "./ui";
 
-const TOOLS: Tool[] = [diff, json, jwt, password, base64, url, hash, uuid, time, regex, text];
+const TOOLS: Tool[] = [diff, json, jwt, password, pdfEditor, resume, base64, url, hash, uuid, time, regex, text];
 
 const nav = document.getElementById("nav")!;
 const main = document.getElementById("main")!;

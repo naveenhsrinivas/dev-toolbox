@@ -80,11 +80,9 @@ export function copyButton(get: () => string, label = "Copy", what?: string): HT
 }
 
 export function button(label: string | Node, onclick: () => void, cls = "btn", title?: string): HTMLButtonElement {
-  return h(
-    "button",
-    { type: "button", class: cls, onclick, title, "aria-label": title },
-    ...(typeof label === "string" ? [label] : [label]),
-  );
+  // The title names icon-only buttons; buttons with visible text keep that text as their name.
+  const hasText = (typeof label === "string" ? label : (label.textContent ?? "")).trim() !== "";
+  return h("button", { type: "button", class: cls, onclick, title, "aria-label": hasText ? undefined : title }, label);
 }
 
 let fieldId = 0;

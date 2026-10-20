@@ -293,6 +293,10 @@ main {
   outline: none;
 }
 
+main > section.wide {
+  max-width: none;
+}
+
 main > section {
   max-width: 1100px;
   display: grid;
@@ -1331,4 +1335,35 @@ pre.code {
   * {
     transition: none !important;
   }
+}
+
+/* ---------- Colour swatches (PDF editor, resume maker) ---------- */
+
+.pe-swatches {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pe-swatch {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border);
+  cursor: pointer;
+}
+
+.pe-swatch.on {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.pe-swatches input[type="color"] {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
