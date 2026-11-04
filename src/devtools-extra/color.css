@@ -1,0 +1,282 @@
+/* ---------- Color Converter ---------- */
+
+.cc-converter {
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: start;
+}
+
+.cc-main {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.cc-checker {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+}
+
+.cc-big-swatch {
+  display: block;
+  height: 120px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.cc-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cc-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cc-picker {
+  flex: none;
+  width: 42px;
+  height: 40px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.cc-status:empty {
+  display: none;
+}
+
+.cc-swatch {
+  display: inline-block;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* Tints and shades */
+
+.cc-scale {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.cc-step {
+  display: grid;
+  gap: 4px;
+  padding: 0 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  min-width: 0;
+}
+
+.cc-step:hover {
+  border-color: var(--accent);
+}
+
+.cc-step.base {
+  border-color: var(--text);
+}
+
+.cc-step-swatch {
+  display: block;
+  height: 44px;
+}
+
+.cc-step-hex {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.cc-step-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* Contrast */
+
+.cc-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.cc-swap {
+  margin-top: 30px;
+}
+
+.cc-results {
+  display: grid;
+  gap: 14px;
+}
+
+.cc-summary {
+  display: grid;
+  grid-template-columns: minmax(160px, auto) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.cc-ratio {
+  display: grid;
+  gap: 4px;
+}
+
+.cc-ratio-num {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.cc-ratio-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cc-checks {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cc-checks li > span:last-child {
+  display: grid;
+  font-size: 0.9rem;
+}
+
+.cc-badge {
+  flex: none;
+  min-width: 46px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cc-badge.pass {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.cc-badge.fail {
+  background: var(--err-soft);
+  color: var(--err);
+}
+
+.cc-sample {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.cc-sample p {
+  margin: 0;
+}
+
+.cc-sample-normal {
+  font-size: 16px;
+}
+
+.cc-sample-large {
+  font-size: 24px;
+}
+
+.cc-sample-ui {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cc-sample-button {
+  padding: 5px 14px;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.cc-sample-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.cc-suggestion:empty {
+  display: none;
+}
+
+.cc-suggest-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+@media (max-width: 700px) {
+  .cc-scale {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cc-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .cc-converter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-big-swatch {
+    height: 72px;
+  }
+
+  .cc-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cc-swap {
+    margin: 0;
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+}

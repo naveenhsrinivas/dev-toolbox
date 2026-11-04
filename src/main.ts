@@ -1,40 +1,45 @@
 import "./style.css";
 import { tool as base64 } from "./tools/base64";
+import { tool as dataConvert } from "./tools/dataconvert";
+import { tool as color } from "./tools/color";
+import { tool as cron } from "./tools/cron";
 import { tool as diff } from "./tools/diff";
 import { tool as hash } from "./tools/hash";
 import { tool as json } from "./tools/json";
 import { tool as jwt } from "./tools/jwt";
+import { tool as markdown } from "./tools/markdown";
+import { tool as imageConvert } from "./tools/imageconvert";
+import { tool as imageCrop } from "./tools/imagecrop";
 import { tool as imageResize } from "./tools/imageresize";
+import { tool as imageToPdf } from "./tools/imagetopdf";
+import { tool as numberBase } from "./tools/numberbase";
 import { tool as password } from "./tools/password";
 import { tool as pdfEditor } from "./tools/pdfeditor";
+import { tool as qrcode } from "./tools/qrcode";
 import { tool as pdfCompress } from "./tools/pdfsize";
 import { tool as pdfMerge } from "./tools/pdfmerge";
+import { tool as pdfProtect } from "./tools/pdfprotect";
+import { tool as pdfSplit } from "./tools/pdfsplit";
+import { tool as pdfToImages } from "./tools/pdftoimages";
 import { tool as regex } from "./tools/regex";
 import { tool as resume } from "./tools/resume";
+import { tool as sqlFormat } from "./tools/sqlformat";
 import { tool as text } from "./tools/text";
 import { tool as time } from "./tools/time";
 import { tool as url } from "./tools/url";
 import { tool as uuid } from "./tools/uuid";
 import { h, icon, type Tool } from "./ui";
 
-const TOOLS: Tool[] = [
-  diff,
-  json,
-  jwt,
-  password,
-  pdfEditor,
-  pdfMerge,
-  pdfCompress,
-  imageResize,
-  resume,
-  base64,
-  url,
-  hash,
-  uuid,
-  time,
-  regex,
-  text,
+// Tools by category, in the order they appear in the sidebar and on the home page.
+const GROUPS: { name: string; tools: Tool[] }[] = [
+  { name: "Text & data", tools: [diff, json, dataConvert, sqlFormat, markdown, regex, text] },
+  { name: "Encoding & security", tools: [jwt, password, base64, url, hash] },
+  { name: "Generators & converters", tools: [uuid, time, cron, qrcode, color, numberBase] },
+  { name: "PDF", tools: [pdfEditor, pdfMerge, pdfSplit, pdfCompress, pdfProtect, imageToPdf, pdfToImages] },
+  { name: "Images", tools: [imageResize, imageCrop, imageConvert] },
+  { name: "Documents", tools: [resume] },
 ];
+const TOOLS: Tool[] = GROUPS.flatMap((g) => g.tools);
 
 const nav = document.getElementById("nav")!;
 const main = document.getElementById("main")!;
@@ -57,17 +62,17 @@ function matches(tool: Tool, q: string): boolean {
 function renderNav() {
   const q = search.value.trim();
   const current = location.hash.slice(2);
-  const shown = TOOLS.filter((t) => !q || matches(t, q));
+  const link = (t: Tool) =>
+    h(
+      "a",
+      { href: `#/${t.id}`, class: t.id === current ? "active" : "", "aria-current": t.id === current ? "page" : undefined },
+      icon(t.icon),
+      h("span", {}, t.name),
+    );
+  const groups = GROUPS.map((g) => ({ ...g, tools: g.tools.filter((t) => !q || matches(t, q)) })).filter((g) => g.tools.length);
   nav.replaceChildren(
-    ...shown.map((t) =>
-      h(
-        "a",
-        { href: `#/${t.id}`, class: t.id === current ? "active" : "", "aria-current": t.id === current ? "page" : undefined },
-        icon(t.icon),
-        h("span", {}, t.name),
-      ),
-    ),
-    ...(shown.length ? [] : [h("p", { class: "nav-empty" }, "No tools match.")]),
+    ...groups.map((g) => h("div", { class: "nav-group" }, h("h2", { class: "nav-heading" }, g.name), ...g.tools.map(link))),
+    ...(groups.length ? [] : [h("p", { class: "nav-empty" }, "No tools match.")]),
   );
 }
 
@@ -79,18 +84,25 @@ function home(): HTMLElement {
     h(
       "p",
       { class: "lede" },
-      "Format JSON, compare text, decode JWTs, generate passwords and more. Everything runs in your browser — nothing you paste is uploaded.",
+      "Format JSON, compare text, work with PDFs and images, generate passwords and more. Everything runs in your browser — nothing you paste is uploaded.",
     ),
-    h(
-      "div",
-      { class: "cards" },
-      ...TOOLS.map((t) =>
+    ...GROUPS.map((g) =>
+      h(
+        "div",
+        { class: "card-group" },
+        h("h2", {}, g.name),
         h(
-          "a",
-          { href: `#/${t.id}`, class: "tool-card" },
-          h("span", { class: "card-icon" }, icon(t.icon)),
-          h("strong", {}, t.name),
-          h("span", {}, t.description),
+          "div",
+          { class: "cards" },
+          ...g.tools.map((t) =>
+            h(
+              "a",
+              { href: `#/${t.id}`, class: "tool-card" },
+              h("span", { class: "card-icon" }, icon(t.icon)),
+              h("strong", {}, t.name),
+              h("span", {}, t.description),
+            ),
+          ),
         ),
       ),
     ),

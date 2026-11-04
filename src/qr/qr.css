@@ -1,0 +1,188 @@
+/* ---------- QR Code ---------- */
+
+.qr-create {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 16px;
+  align-items: start;
+}
+
+.qr-inputs,
+.qr-form,
+.qr-options,
+.qr-read {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.qr-create[hidden],
+.qr-read[hidden] {
+  display: none;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.qr-grid > [hidden] {
+  display: none;
+}
+
+.qr-options {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.qr-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px 18px;
+}
+
+.qr-colours {
+  align-items: center;
+}
+
+.qr-colour {
+  width: 40px;
+  height: 32px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.qr-preview {
+  position: sticky;
+  top: 16px;
+  justify-items: center;
+  text-align: center;
+}
+
+.qr-preview .row-actions {
+  justify-content: center;
+}
+
+.qr-preview .msg {
+  margin: 0;
+  text-align: left;
+}
+
+.qr-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  /* A checkerboard so a transparent-looking or light background still shows its edge. */
+  background: repeating-conic-gradient(var(--surface-2) 0 25%, var(--surface) 0 50%) 0 0 / 16px 16px;
+}
+
+/* The canvas keeps its full pixel size for downloads; only the preview is scaled. */
+.qr-canvas {
+  display: block;
+  width: min(100%, 300px) !important;
+  height: auto !important;
+  image-rendering: pixelated;
+  box-shadow: var(--shadow);
+}
+
+.qr-canvas[hidden] {
+  display: none;
+}
+
+.qr-info {
+  margin: 0;
+}
+
+.qr-details {
+  width: 100%;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.qr-details summary {
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.qr-payload {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  max-height: 200px;
+  overflow: auto;
+  border-radius: 6px;
+  background: var(--surface-2);
+  font-family: var(--mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.qr-read-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.qr-read-out {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.qr-read-out .msg {
+  margin: 0;
+}
+
+.qr-thumb {
+  max-width: 180px;
+  max-height: 180px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.qr-thumb[hidden],
+.qr-video[hidden] {
+  display: none;
+}
+
+.qr-video {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 10px;
+  background: #000;
+}
+
+@media (max-width: 760px) {
+  .qr-create {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qr-preview {
+    position: static;
+  }
+
+  .qr-read-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qr-thumb {
+    order: -1;
+  }
+}
+
+.qr-stage[hidden] {
+  display: none;
+}
+
+.qr-preview .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,167 @@
+/* Shared by Data Convert, SQL Formatter and Markdown Preview. */
+
+.tc-inline {
+  flex-wrap: wrap;
+}
+
+.tc-inline > span:first-child {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.tc-inline select {
+  width: auto;
+  padding: 6px 10px;
+}
+
+.tc-swap {
+  align-self: center;
+}
+
+.tc-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---------- Markdown ---------- */
+
+.md-cols .md-editor,
+.md-preview {
+  height: min(70vh, 640px);
+  min-height: 280px;
+}
+
+.md-preview {
+  overflow: auto;
+  padding: 12px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.md-empty {
+  color: var(--muted);
+}
+
+.md-preview > :first-child {
+  margin-top: 0;
+}
+
+.md-preview h1,
+.md-preview h2,
+.md-preview h3,
+.md-preview h4,
+.md-preview h5,
+.md-preview h6 {
+  margin: 1.4em 0 0.5em;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+
+.md-preview h1 {
+  font-size: 1.7rem;
+}
+
+.md-preview h2 {
+  font-size: 1.35rem;
+}
+
+.md-preview h1,
+.md-preview h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+
+.md-preview h3 {
+  font-size: 1.15rem;
+}
+
+.md-preview p,
+.md-preview ul,
+.md-preview ol,
+.md-preview blockquote,
+.md-preview pre,
+.md-preview table {
+  margin: 0 0 1em;
+}
+
+.md-preview a {
+  color: var(--accent);
+}
+
+.md-preview code {
+  padding: 0.15em 0.35em;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.md-preview pre {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  overflow: auto;
+  overflow-wrap: normal;
+}
+
+.md-preview pre code {
+  padding: 0;
+  background: none;
+}
+
+.md-preview blockquote {
+  padding: 0 1em;
+  color: var(--muted);
+  border-left: 4px solid var(--border);
+}
+
+.md-preview table {
+  display: block;
+  max-width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  overflow-wrap: normal;
+}
+
+.md-preview th,
+.md-preview td {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+}
+
+.md-preview th {
+  background: var(--surface-2);
+}
+
+.md-preview img {
+  max-width: 100%;
+}
+
+.md-preview hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.5em 0;
+}
+
+.md-preview li:has(> input[type="checkbox"]) {
+  list-style: none;
+}
+
+.md-preview li > input[type="checkbox"] {
+  margin: 0 0.4em 0 -1.3em;
+  accent-color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .md-cols .md-editor {
+    height: 40vh;
+  }
+
+  .md-preview {
+    height: auto;
+    max-height: 70vh;
+  }
+}

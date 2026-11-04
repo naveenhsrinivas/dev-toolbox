@@ -1,0 +1,216 @@
+.ic-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  gap: 20px;
+  align-items: start;
+}
+
+.ic-main {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  min-width: 0;
+}
+
+.ic-frame {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  padding: 14px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.ic-stage {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  touch-action: none;
+  user-select: none;
+  /* A checkerboard shows transparent areas. */
+  background: repeating-conic-gradient(var(--surface-2) 0% 25%, var(--surface) 0% 50%) 0 0 / 16px 16px;
+}
+
+.ic-canvas {
+  display: block;
+  max-width: 100%;
+  max-height: min(65vh, 640px);
+}
+
+.ic-box {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  outline: 1px solid rgb(0 0 0 / 0.5);
+  box-shadow: 0 0 0 9999px rgb(0 0 0 / 0.5);
+  cursor: move;
+  touch-action: none;
+}
+
+.ic-box:focus-visible {
+  border: 2px solid var(--accent);
+}
+
+.ic-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  background:
+    linear-gradient(
+      to right,
+      transparent calc(33.33% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(33.33% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(33.33% + 0.5px),
+      transparent calc(33.33% + 0.5px),
+      transparent calc(66.66% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(66.66% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(66.66% + 0.5px),
+      transparent calc(66.66% + 0.5px)
+    ),
+    linear-gradient(
+      to bottom,
+      transparent calc(33.33% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(33.33% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(33.33% + 0.5px),
+      transparent calc(33.33% + 0.5px),
+      transparent calc(66.66% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(66.66% - 0.5px),
+      rgb(255 255 255 / 0.6) calc(66.66% + 0.5px),
+      transparent calc(66.66% + 0.5px)
+    );
+}
+
+.ic-box.dragging .ic-grid,
+.ic-box:focus-visible .ic-grid {
+  opacity: 1;
+}
+
+/* Each handle has a 28px touch target around a small visible square. */
+.ic-handle {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  touch-action: none;
+}
+
+.ic-handle::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgb(0 0 0 / 0.5);
+  background: #fff;
+  border-radius: 2px;
+}
+
+.ic-nw {
+  left: 0;
+  top: 0;
+  cursor: nwse-resize;
+}
+.ic-n {
+  left: 50%;
+  top: 0;
+  cursor: ns-resize;
+}
+.ic-ne {
+  left: 100%;
+  top: 0;
+  cursor: nesw-resize;
+}
+.ic-e {
+  left: 100%;
+  top: 50%;
+  cursor: ew-resize;
+}
+.ic-se {
+  left: 100%;
+  top: 100%;
+  cursor: nwse-resize;
+}
+.ic-s {
+  left: 50%;
+  top: 100%;
+  cursor: ns-resize;
+}
+.ic-sw {
+  left: 0;
+  top: 100%;
+  cursor: nesw-resize;
+}
+.ic-w {
+  left: 0;
+  top: 50%;
+  cursor: ew-resize;
+}
+
+.ic-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ic-straighten {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(100%, 520px);
+  font-size: 0.9rem;
+}
+
+.ic-straighten label {
+  font-weight: 600;
+}
+
+.ic-straighten input[type="range"] {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+
+.ic-angle {
+  min-width: 3.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ic-aspect {
+  flex: 1;
+  width: auto;
+}
+
+.ic-nums {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.ic-nums label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.ic-nums input {
+  flex: 1;
+  width: auto;
+}
+
+.ic-size {
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 860px) {
+  .ic-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

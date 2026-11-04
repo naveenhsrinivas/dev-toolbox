@@ -1,0 +1,96 @@
+/* ---------- Number Base Converter ---------- */
+
+.nb-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px 14px;
+}
+
+/* Binary gets the full row: it's the longest. */
+.nb-fields > .field:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.nb-fields .num-input {
+  width: 70px !important;
+  padding: 3px 6px;
+}
+
+.nb-status:empty,
+.nb-info:empty {
+  display: none;
+}
+
+.nb-info {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.nb-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.nb-byte {
+  display: grid;
+  grid-template-columns: repeat(8, 30px);
+  gap: 2px;
+}
+
+.nb-bit {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  padding: 4px 0 3px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  font-family: var(--mono);
+}
+
+.nb-bit:hover {
+  border-color: var(--accent);
+}
+
+.nb-bit.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nb-bit-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.nb-bit-idx {
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+
+.nb-calc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, auto) minmax(0, 1fr);
+  gap: 12px;
+  align-items: end;
+}
+
+@media (max-width: 700px) {
+  .nb-fields,
+  .nb-calc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .nb-byte {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    width: 100%;
+  }
+}

@@ -277,6 +277,20 @@ nav a.active {
   color: var(--accent);
 }
 
+.nav-group + .nav-group {
+  margin-top: 12px;
+}
+
+.nav-heading {
+  margin: 0 0 4px;
+  padding: 0 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .nav-empty {
   color: var(--muted);
   font-size: 0.9rem;
@@ -313,6 +327,17 @@ main > section {
   color: var(--muted);
   margin: 0 0 8px;
   max-width: 60ch;
+}
+
+.card-group {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.card-group h2 {
+  margin: 0;
+  font-size: 1.05rem;
 }
 
 .cards {
@@ -429,6 +454,9 @@ main > section {
 textarea,
 input[type="text"],
 input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
 input[type="number"],
 input[type="search"],
 input[type="datetime-local"],
@@ -540,6 +568,11 @@ textarea[readonly] {
   cursor: pointer;
   font-weight: 500;
   white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn span {

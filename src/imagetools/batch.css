@@ -1,0 +1,149 @@
+.bc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: 20px;
+  align-items: start;
+}
+
+.bc-files {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bc-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.bc-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bc-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.bc-row.working {
+  border-color: var(--accent);
+}
+
+.bc-row.error {
+  border-color: var(--err);
+}
+
+.bc-thumb {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: repeating-conic-gradient(var(--surface-2) 0% 25%, var(--surface) 0% 50%) 0 0 / 12px 12px;
+}
+
+.bc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bc-noimg {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.bc-info {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.bc-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bc-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.bc-meta strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.bc-error {
+  color: var(--err);
+}
+
+.bc-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.bc-row-actions a[hidden] {
+  display: none;
+}
+
+.bc-color {
+  width: 44px;
+  height: 34px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.bc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .bc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Settings first on small screens, so they're seen before converting. */
+  .bc-workspace > .ir-controls {
+    order: -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .bc-row {
+    flex-wrap: wrap;
+  }
+
+  .bc-row-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.bc-dl {
+  text-decoration: none;
+}

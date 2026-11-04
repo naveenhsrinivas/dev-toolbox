@@ -104,11 +104,13 @@ export function checkbox(label: string, checked: boolean, onchange: (checked: bo
 
 /** A row of mutually exclusive options. */
 export function segmented<T extends string>(name: string, options: [T, string][], value: T, onchange: (v: T) => void): HTMLElement {
+  // One shared name per group, so picking an option unselects the others.
+  const group = `${name}-${++fieldId}`;
   return h(
     "div",
     { class: "segmented", role: "radiogroup", "aria-label": name },
     ...options.map(([v, label]) => {
-      const input = h("input", { type: "radio", name: `${name}-${fieldId++}`, value: v, checked: v === value });
+      const input = h("input", { type: "radio", name: group, value: v, checked: v === value });
       input.addEventListener("change", () => input.checked && onchange(v));
       return h("label", {}, input, h("span", {}, label));
     }),

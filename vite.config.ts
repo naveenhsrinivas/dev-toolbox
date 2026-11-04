@@ -25,4 +25,6 @@ export default defineConfig({
   base: "./",
   plugins: [csp],
   worker: { format: "es" },
+  // The big chunks (pdf.js, PDF encryption, SQL formatter) load only when their tool is opened.
+  build: { chunkSizeWarningLimit: 700 },
 });

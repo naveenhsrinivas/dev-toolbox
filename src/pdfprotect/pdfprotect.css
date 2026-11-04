@@ -1,0 +1,58 @@
+.pp-workspace {
+  display: grid;
+  gap: 14px;
+}
+
+.pp-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.pp-options {
+  display: grid;
+  gap: 14px;
+}
+
+.pp-pass {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pp-pass input {
+  flex: 1;
+}
+
+.pp-perms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.pp-perms legend {
+  padding: 0 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pp-busy .pp-options,
+.pp-busy .dropzone {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .pp-options .two-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
