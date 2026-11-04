@@ -152,3 +152,22 @@ export function kvTable(rows: [string, string][], copyable = true): HTMLElement 
 export function plural(n: number, word: string, pluralWord = `${word}s`): string {
   return `${n.toLocaleString()} ${n === 1 ? word : pluralWord}`;
 }
+
+export function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
+  return `${(n / 1024 / 1024).toFixed(1)} MB`;
+}
+
+/** Start a download of `bytes` and return the object URL (revoke it when replaced). */
+export function downloadBytes(bytes: Uint8Array | Blob, name: string, type: string): string {
+  const blob = bytes instanceof Blob ? bytes : new Blob([bytes as Uint8Array<ArrayBuffer>], { type });
+  const url = URL.createObjectURL(blob);
+  h("a", { href: url, download: name }).click();
+  return url;
+}
+
+/** Make a string safe to use as a file name (without extension). */
+export function safeFileName(name: string, fallback: string): string {
+  return name.trim().replace(/[\\/:*?"<>|]+/g, "-") || fallback;
+}

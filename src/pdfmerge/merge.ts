@@ -1,5 +1,5 @@
 import "./merge.css";
-import { button, h, header, icon, ICONS, message, plural, type Tool } from "../ui";
+import { button, formatBytes, h, header, icon, ICONS, message, plural, type Tool } from "../ui";
 import { inspectPdf, mergePdfs, PdfReadError, renderThumbnail } from "./pdf";
 import { parsePageRanges } from "./ranges";
 
@@ -15,12 +15,6 @@ interface Item {
 
 const MAX_FILE_BYTES = 200 * 1024 * 1024;
 
-function formatBytes(n: number): string {
-  if (n < 1024) return `${n} B`;
-  if (n < 1024 * 1024) return `${(n / 1024).toFixed(0)} KB`;
-  return `${(n / 1024 / 1024).toFixed(1)} MB`;
-}
-
 export function mountPdfMerge(section: HTMLElement, tool: Pick<Tool, "name" | "description">) {
   let items: Item[] = [];
   let nextId = 1;
@@ -31,7 +25,7 @@ export function mountPdfMerge(section: HTMLElement, tool: Pick<Tool, "name" | "d
   const picker = h("input", { type: "file", accept: "application/pdf,.pdf", multiple: true, hidden: true });
   const drop = h(
     "label",
-    { class: "pm-drop" },
+    { class: "dropzone" },
     picker,
     icon(ICONS.upload, "i big"),
     h("strong", {}, "Drop PDF files here"),
@@ -78,8 +72,13 @@ export function mountPdfMerge(section: HTMLElement, tool: Pick<Tool, "name" | "d
     list,
     h(
       "div",
-      { class: "pm-merge" },
-      h("label", { class: "pm-name" }, h("span", {}, "File name"), h("span", { class: "pm-name-input" }, outName, h("span", {}, ".pdf"))),
+      { class: "save-bar" },
+      h(
+        "label",
+        { class: "save-name" },
+        h("span", {}, "File name"),
+        h("span", { class: "save-name-input" }, outName, h("span", {}, ".pdf")),
+      ),
       mergeBtn,
     ),
   );

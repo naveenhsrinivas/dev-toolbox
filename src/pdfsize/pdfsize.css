@@ -1,0 +1,75 @@
+.ps-workspace {
+  display: grid;
+  gap: 14px;
+}
+
+.ps-file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.ps-options {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.ps-presets {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.ps-preset {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.ps-preset:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.ps-preset input {
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.ps-preset > span {
+  display: grid;
+  gap: 2px;
+}
+
+.ps-preset > span > span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.ps-target {
+  display: grid;
+  gap: 10px;
+}
+
+.ps-size-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ps-busy .ps-options,
+.ps-busy .dropzone {
+  pointer-events: none;
+  opacity: 0.6;
+}

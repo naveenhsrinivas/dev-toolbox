@@ -1372,3 +1372,180 @@ pre.code {
   color: inherit;
   font-weight: 600;
 }
+
+/* ---------- File drop zone (PDF and image tools) ---------- */
+
+.dropzone {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 48px 16px;
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+  cursor: pointer;
+}
+
+.dropzone strong {
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.dropzone:hover,
+.dropzone.over {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.dropzone:has(:focus-visible) {
+  outline: 2px solid var(--accent);
+}
+
+.dropzone.compact {
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.dropzone.compact > span {
+  display: none;
+}
+
+.dropzone.compact .i.big {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---------- File name + save button (PDF and image tools) ---------- */
+
+.save-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.save-name {
+  flex: 1 1 220px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.save-name-input {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.save-name-input:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.save-name-input input {
+  border: 0 !important;
+  outline: 0 !important;
+  background: none;
+}
+
+.save-bar .btn.primary {
+  padding: 10px 20px;
+}
+
+.unit-select {
+  width: auto;
+}
+
+@media (max-width: 560px) {
+  .save-bar .btn.primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ---------- Image Resizer ---------- */
+
+.ir-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+  gap: 20px;
+  align-items: start;
+}
+
+.ir-previews {
+  display: grid;
+  gap: 14px;
+}
+
+.ir-figure {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.ir-figure img {
+  max-width: 100%;
+  max-height: 420px;
+  justify-self: start;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  /* A checkerboard shows transparent areas. */
+  background: repeating-conic-gradient(var(--surface-2) 0% 25%, var(--surface) 0% 50%) 0 0 / 16px 16px;
+}
+
+.ir-figure figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.ir-controls,
+.ir-stack {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.ir-stack {
+  gap: 8px;
+  justify-items: start;
+}
+
+.ir-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.ir-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent);
+}
+
+.ir-planned {
+  margin: 0;
+  font-weight: 600;
+}
+
+.ir-planned:empty {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .ir-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
